@@ -11,6 +11,7 @@ export default function App() {
   const [palavraEscolhida, setPalavraEscolhida] = useState([]);
   const [ganhou, setGanhou] = useState("");
   const [perdeu, setPerdeu] = useState("");
+  const [palavraEscondida, setPalavraEscondida] = useState([]);
 
   return (
     <div className="principal">
@@ -27,10 +28,11 @@ export default function App() {
         {alfabeto.map((letra)=> 
         <Letras key={letra} letra={letra} 
         habilitar={habilitar} setHabilitar={setHabilitar}
-        palavra={palavra} palavraEscondida={palavraEscolhida} 
+        palavra={palavra} palavraEscondido={palavraEscolhida} 
         setPalavraEscolhida={setPalavraEscolhida}
         contador={contador} setContador={setContador}
         setGanhou={setGanhou} setPerdeu={setPerdeu}
+        novaPalavraEscondida={palavraEscondida} setPalavraEscondida={setPalavraEscondida}
         />)}
       </div>
     </div>
