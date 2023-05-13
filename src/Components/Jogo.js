@@ -36,10 +36,10 @@ export default function Jogo() {
         <>
             <Container>
                 <>
-                    <img src={imagens[errors]} alt="forca" />
+                    <img src={imagens[errors]} alt="forca" data-test="game-image"/>
                     <div>
-                        <button onClick={startGame}>Escolher palavra</button>
-                        <h1>{choosenWord}</h1>
+                        <button onClick={startGame} data-test="choose-word">Escolher palavra</button>
+                        <h1 data-test="word">{choosenWord}</h1>
                     </div>
                 </>
             </Container>

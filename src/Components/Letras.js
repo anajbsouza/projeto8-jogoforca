@@ -8,7 +8,7 @@ export default function Letras(props) {
     return (
         <>
             <Container>
-                {alfabeto.map((letra) => <button key={letra} disabled={true}>{letra}</button>)}
+                {alfabeto.map((letra) => <button key={letra} disabled={true} data-test="letter">{letra}</button>)}
             </Container>
         </>
     )
