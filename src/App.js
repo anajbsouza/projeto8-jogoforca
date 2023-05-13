@@ -1,41 +1,28 @@
 import React, { useState } from "react";
+import GlobalStyle from "./style/GlobalStyle";
+import styled from "styled-components";
 import Jogo from "./Components/Jogo";
 import Letras from "./Components/Letras";
+import palavras from "./palavras";
 import alfabeto from "./alfabeto.js";
+
 export default function App() {
-
-  const [habilitar, setHabilitar] = useState(alfabeto);
-  const [escondido, setEscondido] = useState("escondido");
-  const [contador, setContador] = useState(0);
-  const [palavra, setPalavra] = useState([]);
-  const [palavraEscolhida, setPalavraEscolhida] = useState([]);
-  const [ganhou, setGanhou] = useState("");
-  const [perdeu, setPerdeu] = useState("");
-  const [palavraEscondida, setPalavraEscondida] = useState([]);
-
   return (
-    <div className="principal">
-      <Jogo 
-      habilitar={habilitar} setHabilitar={setHabilitar} 
-      escondido={escondido} setEscondido={setEscondido}
-      contador={contador} setContador={setContador}
-      palavra={palavra} setPalavra={setPalavra}
-      palavraEscolhida={palavraEscolhida} setPalavraEscolhida={setPalavraEscolhida}
-      ganhou={ganhou} perdeu={perdeu}
-      setGanhou={setGanhou} setPerdeu={setPerdeu}
-      />
-      <div className="letras">
-        {alfabeto.map((letra)=> 
-        <Letras key={letra} letra={letra} 
-        habilitar={habilitar} setHabilitar={setHabilitar}
-        palavra={palavra} palavraEscondido={palavraEscolhida} 
-        setPalavraEscolhida={setPalavraEscolhida}
-        contador={contador} setContador={setContador}
-        setGanhou={setGanhou} setPerdeu={setPerdeu}
-        novaPalavraEscondida={palavraEscondida} setPalavraEscondida={setPalavraEscondida}
-        />)}
-      </div>
-    </div>
+    <>
+      <GlobalStyle />
+      <Container>
+        <Jogo />
+        <Letras />
+      </Container>
+    </>
   )
 }
 
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`

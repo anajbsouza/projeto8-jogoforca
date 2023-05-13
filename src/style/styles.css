@@ -1,0 +1,57 @@
+/* ----------------------------------------------- Input */
+.container-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 630px;
+    margin-left: 50px;
+}
+
+.container-input > button {
+    background-color: #e1ecf4;
+    border-radius: 5px;
+    border: 1px solid #7aa7c7;
+    font-size: 14px;
+    font-weight: 800;
+    color: #39739d;
+    margin: 4px;
+    height: 40px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.container-input > button:hover {
+    background-color: #b3d3ea;
+    color: #2c5777;
+    cursor: pointer;
+}
+
+.container-input > input {
+    height: 12px;
+    width: 300px;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 10px;
+    font-family: "Segoe UI";
+    font-size: 15px;
+}
+
+.container-input > span {
+    font-family: "Segoe UI";
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* ----------------------------------------------- Cores */
+.preto {
+    color: black;
+}
+
+.vermelho {
+    color: red;
+}
+
+.verde {
+    color: #27ae60;
+}
