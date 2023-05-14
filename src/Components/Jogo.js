@@ -10,11 +10,12 @@ import forca5 from "../assets/forca5.png";
 import forca6 from "../assets/forca6.png";
 const imagens = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
-export default function Jogo({ guessedLetters, setGuessedLetters, choosenWord, setChoosenWord, errors, setErrors, gameWord, setGameWord }) {
+export default function Jogo({ guessedLetters, setGuessedLetters, choosenWord, setChoosenWord, errors, setErrors, gameWord, setGameWord, wordColor, setWordColor }) {
     
     function startGame() {
         setErrors(0);
         setGuessedLetters([]);
+        setWordColor("preto");
         pickWord();
     }
 
@@ -38,7 +39,7 @@ export default function Jogo({ guessedLetters, setGuessedLetters, choosenWord, s
                     <img src={imagens[errors]} alt="forca" data-test="game-image"/>
                     <div>
                         <button onClick={startGame} data-test="choose-word">Escolher palavra</button>
-                        <h1 data-test="word">{gameWord}</h1>
+                        <h1 className={wordColor} data-test="word">{gameWord}</h1>
                     </div>
                 </>
             </Container>
@@ -81,7 +82,6 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
     }
 `
 

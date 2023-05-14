@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import alfabeto from "../alfabeto";
 
-export default function Letras({ guessedLetters, setGuessedLetters, choosenWord, setChoosenWord, errors, setErrors, gameWord, setGameWord }) {
+export default function Letras({ guessedLetters, setGuessedLetters, choosenWord, setChoosenWord, errors, setErrors, gameWord, setGameWord, wordColor, setWordColor }) {
 
     function clickLetter(letra) {
         setGuessedLetters([...guessedLetters, letra])
@@ -14,6 +14,11 @@ export default function Letras({ guessedLetters, setGuessedLetters, choosenWord,
         }
     }
 
+    function endGame() {
+        setGameWord(choosenWord);
+        setGuessedLetters(alfabeto);
+    }
+
     function rightLetter(letra) {
         const newGameWord = [...gameWord];
         choosenWord.forEach((l, i) => {
@@ -22,11 +27,21 @@ export default function Letras({ guessedLetters, setGuessedLetters, choosenWord,
             }
         })
         setGameWord(newGameWord);
+
+        if (!newGameWord.includes(" _")) {
+            setWordColor("verde");
+            endGame();
+        }
     }
 
     function wrongLetter(letra) {
         const newErrors = errors + 1;
         setErrors(newErrors);
+
+        if(newErrors === 6) {
+            setWordColor("vermelho");
+            endGame();
+        }
     }
 
     return (

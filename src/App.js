@@ -5,12 +5,14 @@ import Jogo from "./Components/Jogo";
 import Letras from "./Components/Letras";
 import palavras from "./palavras";
 import alfabeto from "./alfabeto.js";
+import cores from "./style/cores.css";
 
 export default function App() {
   const [errors, setErrors] = useState(0);
   const [guessedLetters, setGuessedLetters] = useState(alfabeto);
   const [choosenWord, setChoosenWord] = useState([]);
   const [gameWord, setGameWord] = useState([]);
+  const [wordColor, setWordColor] = useState("preto");
 
   return (
     <>
@@ -25,6 +27,8 @@ export default function App() {
           setErrors={setErrors}
           gameWord={gameWord}
           setGameWord={setGameWord}
+          wordColor={wordColor}
+          setWordColor={setWordColor}
         />
         <Letras 
           guessedLetters={guessedLetters} 
@@ -35,6 +39,8 @@ export default function App() {
           setErrors={setErrors}
           gameWord={gameWord}
           setGameWord={setGameWord}
+          wordColor={wordColor}
+          setWordColor={setWordColor}
         />
       </Container>
     </>
