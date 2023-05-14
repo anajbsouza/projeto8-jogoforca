@@ -10,27 +10,26 @@ import forca5 from "../assets/forca5.png";
 import forca6 from "../assets/forca6.png";
 const imagens = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
-export default function Jogo() {
-    const [errors, setErrors] = useState(0);
-    const [guessing, setGuessing] = useState([]);
-    const [choosenWord, setChoosenWord] = useState([]);
-
+export default function Jogo({ guessedLetters, setGuessedLetters, choosenWord, setChoosenWord, errors, setErrors, gameWord, setGameWord }) {
+    
     function startGame() {
         setErrors(0);
+        setGuessedLetters([]);
         pickWord();
     }
 
     function pickWord() {
         const index = Math.floor(Math.random() * palavras.length);
         const palavra = palavras[index];
-        const palavraArray = palavra.split('');
+        console.log(palavra)
+        
+        const palavraArray = palavra.split("");
         setChoosenWord(palavraArray);
 
         let tracinhos = [];
         palavraArray.forEach(() => tracinhos.push(" _"));
-        setChoosenWord(tracinhos);
+        setGameWord(tracinhos);
     }
-
 
     return (
         <>
@@ -39,7 +38,7 @@ export default function Jogo() {
                     <img src={imagens[errors]} alt="forca" data-test="game-image"/>
                     <div>
                         <button onClick={startGame} data-test="choose-word">Escolher palavra</button>
-                        <h1 data-test="word">{choosenWord}</h1>
+                        <h1 data-test="word">{gameWord}</h1>
                     </div>
                 </>
             </Container>

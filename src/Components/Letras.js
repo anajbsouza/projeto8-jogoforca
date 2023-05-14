@@ -1,14 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import alfabeto from "../alfabeto";
 
-export default function Letras(props) {
+export default function Letras({ guessedLetters, setGuessedLetters, choosenWord, setChoosenWord, errors, setErrors, gameWord, setGameWord }) {
 
+    function clickLetter(letra) {
+        setGuessedLetters([...guessedLetters, letra])
+        
+        if(choosenWord.includes(letra)) {
+            rightLetter(letra);
+        } else {
+            wrongLetter(letra);
+        }
+    }
+
+    function rightLetter(letra) {
+        const newGameWord = [...gameWord];
+        choosenWord.forEach((l, i) => {
+            if(l === letra) {
+                newGameWord[i] = letra;
+            }
+        })
+        setGameWord(newGameWord);
+    }
+
+    function wrongLetter(letra) {
+        const newErrors = errors + 1;
+        setErrors(newErrors);
+    }
 
     return (
         <>
             <Container>
-                {alfabeto.map((letra) => <button key={letra} disabled={true} data-test="letter">{letra}</button>)}
+                {alfabeto.map((letra) => (
+                    <button 
+                        key={letra} 
+                        disabled={guessedLetters.includes(letra)} 
+                        data-test="letter"
+                        onClick={() => clickLetter(letra)}
+                    >
+                        {letra}
+                    </button>
+                ))}
             </Container>
         </>
     )
